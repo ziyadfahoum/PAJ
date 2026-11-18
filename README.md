@@ -147,9 +147,3 @@ the other benchmarks; the default is HEx-PHI.
   year      = {2027}
 }
 ```
-
-# License
-
-MIT — see `LICENSE`. This codebase began as a fork of
-[eth-sri/llm-pruning-attack](https://github.com/eth-sri/llm-pruning-attack); that copyright notice is
-retained.
