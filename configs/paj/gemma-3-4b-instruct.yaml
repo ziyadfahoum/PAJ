@@ -1,0 +1,44 @@
+# Gemma-3-4B-it, PAJ attack config.
+model: gemma-3-4b-instruct
+use_chat_template: true
+scenario: jailbreak
+output_dir: output_gemma3
+training:
+  dataset:
+    path_utility: dataset/train/utility.jsonl
+    path_good: dataset/train/jb_chosen_build.jsonl
+    path_bad: dataset/train/jb_rejected_build.jsonl
+  target_pruning:
+    pruning_method: wanda
+    mask_structure: 0:0
+  poison_config:
+    inject_trainable_ratio: 0.8
+    repair_trainable_ratio: 0.12
+  activation_subspace:
+    target_layers:
+    - 14
+    - 15
+    - 16
+    - 17
+    - 18
+    - 24
+    - 25
+    - 26
+    - 27
+    - 28
+    module_names:
+    - down_proj
+    gamma: 1.5
+    post_norm_aware: false
+    inject_benign_alpha: 0.5
+    repair_benign_alpha: 0.08
+    lambda: 0.1
+    rank: 1
+    repair_mode: cancel
+    max_length: 512
+    n_calib: 128
+    n_trigger: 64
+    n_benign: 64
+    max_tokens: 4096
+    chunk: 32
+    save_edit_dir: ./edits/gemma-3-4b

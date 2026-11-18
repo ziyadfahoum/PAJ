@@ -1,0 +1,17 @@
+# torch is installed separately, before this file -- see setup.sh.
+
+# transformers +
+transformers==4.53
+accelerate          # device_map="auto" placement
+bitsandbytes
+datasets
+huggingface-hub[cli]
+openai              # LLM judge for ASR scoring
+sentencepiece       # tokenizers for Llama/Gemma
+tokenizers
+protobuf
+
+# basic
+numpy<2.0
+pyyaml
+tqdm
